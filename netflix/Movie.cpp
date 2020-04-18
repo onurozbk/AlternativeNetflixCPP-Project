@@ -7,7 +7,7 @@ static int _movieid = 1;
 Movie::Movie() {
 }
 
-void Movie::setMovie(string moviename, int imdbsoccer) {
+void Movie::createMovie(string moviename, int imdbsoccer) {
 	this->MovieId = _movieid++;
 	this->MovieName = moviename;
 	this->ImdbSoccer = imdbsoccer;
@@ -16,6 +16,25 @@ void Movie::setMovie(string moviename, int imdbsoccer) {
 int Movie::GetMovieId() 
 {
 	return this->MovieId;
+}
+
+void Movie::setMovieName(string movieName)
+{
+	this->MovieName = movieName;
+}
+string Movie::getMovieName() 
+{
+	return this->MovieName;
+}
+
+void Movie::setImdbSoccer(int imdbsoccer)
+{
+	this->ImdbSoccer = imdbsoccer;
+}
+
+int Movie::getImdbSoccer()
+{
+	return this->ImdbSoccer;
 }
 
 bool Movie::operator == (const Movie& otherItem) {

@@ -10,7 +10,12 @@ private:
 
 public:
 	Movie();
-	void setMovie(string, int);
+	void createMovie(string, int);
+	void setMovieName(string);
+	string getMovieName();
+	void setImdbSoccer(int);
+	int getImdbSoccer();
+
 	bool operator == (const Movie&);
 	friend std::ostream& operator << (std::ostream&, const Movie&);
 	int GetMovieId();

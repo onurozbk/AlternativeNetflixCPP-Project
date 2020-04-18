@@ -4,74 +4,115 @@
 #include "Movie.h"
 using namespace std;
 
+
 void getHeader() {
 	cout << "      ___ ___  ___             " << endl;
 	cout << "|\\ | |__   |  |__  |    | \\_/  " << endl;
 	cout << "| \\| |___  |  |    |___ | / \\ " << endl;
 	cout << endl;
 	cout << endl;
-
-	cout << "Hello World! Welcome to NETFLIX project, for the help please enter 0, for the close project -1: ";
 }
 
 
-void transectionResult(int transection)
+int transectionResult(int transaction)
 {
-	if (transection > 0)
-	{
-		cout << endl;
-		cout << "Please enter 1 for add new movie: " << endl;
-		cout << "Please enter 2 for search movie: " << endl;
-		cout << "Please enter 3 for learn how much movie in the system: " << endl;
-		cout << "Please enter 4 for order by imdb soccer: " << endl;
-		cout << "Please enter 4 for order by alphabetic: " << endl;
-	}
-	else
-	{
-		return;
-	}
 
+	if (transaction == 0)
+	{
+		int result;
+		cout << endl;
+		cout << "Please enter 1 for List all movies: " << endl;
+		cout << "Please enter 2 for add new movie: " << endl;
+		cout << "Please enter 3 for remove a movie: " << endl;
+		cout << "Please enter 4 for search movie: " << endl;
+		cout << "Please enter 5 for learn how much movie in the system: " << endl;
+		cout << "Please enter 6 for order by imdb soccer: " << endl;
+		cout << "Please enter 7 for order by alphabetic: " << endl;
+		cin >> result;
+
+		return result;
+	}
+	else if (transaction > 0)
+	{
+		return transaction;
+	}
+	else {
+		return  0;
+	}
 }
+
 
 
 int main()
 {
+	int transaction;
+	int userSelectedTransection;
+	Movie movie;
+	List<Movie> myList(1000);
+
+#pragma region Create 4 Movie
+	movie.createMovie("Lord Of The Rings", 9);
+	myList.insert(movie);
+
+	movie.createMovie("The Godfather", 10);
+	myList.insert(movie);
+
+	movie.createMovie("Matrix", 7);
+	myList.insert(movie);
+
+	movie.createMovie("Fight Club", 8);
+	myList.insert(movie);
+#pragma endregion
+
 	getHeader();
 
-	int transection;
-	//cin >> transection;
-	//transectionResult(transection);
-
-	List<Movie> myList(1000);
-	Movie movie;
-	movie.setMovie("Lord Of The Rings", 9);
-	myList.insert(movie);
-
-	movie.setMovie("The Godfather", 10);
-	myList.insert(movie);
-
-	movie.setMovie("Matrix", 7);
-	myList.insert(movie);
-
-	movie.setMovie("Fight Club", 8);
-	myList.insert(movie);
-
-	myList.print();
-	myList.removeMovie(2);
-	myList.print();
+	cout << "Hello World! Welcome to NETFLIX project, for the help please enter 0, for the close project -1: ";
 
 
-#pragma region List of Int
-	List<int> myIntList(5);
-	myIntList.insert(1);
-	myIntList.insert(2);
-	myIntList.insert(3);
-	myIntList.insert(4);
-	myIntList.insert(5);
-	myIntList.print();
-	myIntList.remove(3);
-	myIntList.print();
-#pragma endregion
+
+	while (true)
+	{
+		cin >> transaction;
+		userSelectedTransection = transectionResult(transaction);
+		if (userSelectedTransection == 1) {//List All Movies
+			myList.print();
+			cout << "Success, if you need help please enter 0: ";
+		}
+		else if (userSelectedTransection == 2) {// Add new Movie
+			string moviename;
+			int imdbsoccer;
+			cout << "Please enter movie name: ";
+			cin >> moviename;
+			cout << "Please enter movie Imdb soccer: ";
+			cin >> imdbsoccer;
+			movie.createMovie(moviename, imdbsoccer);
+			myList.insert(movie);
+			cout << "Success, if you need help please enter 0: ";
+		}
+		else if (userSelectedTransection == 3)
+		{
+			int movieid;
+			bool confirm;
+			cout << "Please Enter a movie Id: ";
+			cin >> movieid;
+			cout << to_string(movieid) << "The movie will be remove are you sure? '1' or '0' ";
+			cin >> confirm;
+			if (confirm) {
+				if (myList.removeMovie(movieid))
+				{
+					cout << "Success, if you need help please enter 0: ";
+				}
+				else {
+					cout << "Could not be remove";
+				}
+
+			}
+
+		}
+		else {
+			cout << "Could not be implament this step :(";
+		}
+	}
 
 	system("pause");
 	return 0;
