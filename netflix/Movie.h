@@ -15,7 +15,6 @@ public:
 	string getMovieName();
 	void setImdbSoccer(int);
 	int getImdbSoccer();
-
 	bool operator == (const Movie&);
 	friend std::ostream& operator << (std::ostream&, const Movie&);
 	int GetMovieId();

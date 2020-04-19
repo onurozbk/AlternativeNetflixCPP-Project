@@ -1,4 +1,5 @@
 #include<iostream>
+#include "string"
 using namespace std;
 template <typename T>
 
@@ -85,4 +86,30 @@ public:
 		return false;
 	}
 
+	void searchMovie(string keyword)
+	{
+		std::cout << endl;
+		for (int i = 0; i < this->ListOfCount; i++) {
+			string movieName = array[i].getMovieName();
+			size_t found = movieName.find(keyword);
+			if (found != string::npos)
+			{
+				std::cout << array[i] << " " << endl;
+			}
+		}
+		std::cout << std::endl;
+	}
+
+	void sortByImdbSoccer()
+	{
+		T tmp;
+		for (int i = 0; i < ListOfCount - 1; i++)
+			for (int j = i + 1; j < ListOfCount; j++)
+				if (array[i].getImdbSoccer() < array[j].getImdbSoccer())
+				{
+					tmp = array[i];
+					array[i] = array[j];
+					array[j] = tmp;
+				}
+	}
 };

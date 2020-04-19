@@ -37,6 +37,7 @@ int Movie::getImdbSoccer()
 	return this->ImdbSoccer;
 }
 
+
 bool Movie::operator == (const Movie& otherItem) {
 	if (this->MovieId == otherItem.MovieId)
 		return true;
