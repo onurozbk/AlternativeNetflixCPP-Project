@@ -43,7 +43,7 @@ public:
 
 	void insert(T entity) {
 		if (this->isFull()) {
-			std::cout << "Not inserted !!! List is full." << std::endl;
+			cout << "Not inserted !!! List is full." << endl;
 			return;
 		}
 
@@ -67,11 +67,11 @@ public:
 	}
 
 	void print() const {
-		std::cout << endl;
+		cout << endl;
 		for (int i = 0; i < this->ListOfCount; i++) {
-			std::cout << array[i] << " " << endl;
+			cout << array[i] << " " << endl;
 		}
-		std::cout << std::endl;
+		cout << endl;
 	}
 
 	bool removeMovie(int Id) {
@@ -88,16 +88,16 @@ public:
 
 	void searchMovie(string keyword)
 	{
-		std::cout << endl;
+		cout << endl;
 		for (int i = 0; i < this->ListOfCount; i++) {
 			string movieName = array[i].getMovieName();
 			size_t found = movieName.find(keyword);
 			if (found != string::npos)
 			{
-				std::cout << array[i] << " " << endl;
+				cout << array[i] << " " << endl;
 			}
 		}
-		std::cout << std::endl;
+		cout << endl;
 	}
 
 	void sortByImdbSoccer()
